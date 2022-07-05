@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPane" prefHeight="702.0" prefWidth="886.0" style="-fx-background-color: #cfc3a5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ijse_pos.controller.placeOrderController">
+   <children>
+      <Label alignment="CENTER" layoutX="373.0" layoutY="29.0" prefHeight="34.0" prefWidth="163.0" text="Place Order">
+         <font>
+            <Font name="Georgia" size="26.0" />
+         </font>
+      </Label>
+      <Separator layoutX="4.0" layoutY="71.0" prefHeight="8.0" prefWidth="900.0" />
+      <JFXTabPane fx:id="placeOrderTabPane" layoutX="-1.0" layoutY="78.0" prefHeight="624.0" prefWidth="908.0">
+         <tabs>
+            <Tab style="-fx-cursor: hand;" text="Add Customer">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1407.0" style="-fx-background-color: white;">
+                     <children>
+                        <JFXTextField fx:id="cNameTxt" layoutX="104.0" layoutY="68.0" onKeyReleased="#validateCustomer" promptText="Customer Name">
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                           <effect>
+                              <Reflection />
+                           </effect>
+                        </JFXTextField>
+                        <JFXTextField fx:id="cityTxt" layoutX="339.0" layoutY="68.0" onKeyReleased="#validateCustomer" promptText="City">
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                           <effect>
+                              <Reflection />
+                           </effect>
+                        </JFXTextField>
+                        <JFXTextField fx:id="pCodeTxt" layoutX="618.0" layoutY="68.0" onKeyReleased="#validateCustomer" promptText="Postal-Code">
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                           <effect>
+                              <Reflection />
+                           </effect>
+                        </JFXTextField>
+                        <JFXTextField fx:id="provinceTxt" layoutX="402.0" layoutY="182.0" onKeyReleased="#validateCustomer" promptText="Province">
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                           <effect>
+                              <Reflection />
+                           </effect>
+                        </JFXTextField>
+                        <JFXButton fx:id="addCustomerBtn" buttonType="RAISED" layoutX="396.0" layoutY="450.0" onAction="#addCustomer" ripplerFill="#c93434" style="-fx-background-color: grey;" text="Add Customer" textAlignment="CENTER" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                        <JFXTextArea fx:id="addressTxt" layoutX="104.0" layoutY="271.0" onKeyReleased="#validateCustomer" prefHeight="80.0" prefWidth="419.0" promptText="Address">
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </JFXTextArea>
+                        <ImageView fx:id="toSelectItemsTabBtn" fitHeight="44.0" fitWidth="46.0" layoutX="779.0" layoutY="481.0" onMouseClicked="#toSelect_ItemsTab" onMouseEntered="#onMouseEnteredAnimation" onMouseExited="#onMouseExitAnimation">
+                           <image>
+                              <Image url="@misc/next.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <JFXComboBox fx:id="cTitleCmb" layoutX="101.0" layoutY="182.0" onMouseReleased="#validateCustomer" prefHeight="31.0" prefWidth="175.0" promptText="Title" />
+                        <ImageView fitHeight="235.0" fitWidth="216.0" layoutX="618.0" layoutY="194.0">
+                           <image>
+                              <Image url="@misc/cashier_desk.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="selectItemsTab" closable="false" style="-fx-cursor: hand;" text="Select Items">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="itemTbl" layoutX="14.0" layoutY="14.0" prefHeight="350.0" prefWidth="883.0" style="-fx-background-color: white;">
+                           <columns>
+                              <TableColumn fx:id="itemCodeClm" prefWidth="157.0" text="Item" />
+                              <TableColumn fx:id="descriptionClm" prefWidth="328.0" text="Description" />
+                              <TableColumn fx:id="packSizeClm" minWidth="0.0" prefWidth="104.0" text="Package Size" />
+                              <TableColumn fx:id="uPriceClm" prefWidth="139.0" text="Unit Price (Rs.)" />
+                              <TableColumn fx:id="qOnHandClm" prefWidth="154.0" text="Quantity (On Hand)" />
+                           </columns>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
+                        </TableView>
+                        <JFXTextField fx:id="qtyTxt" alignment="CENTER" layoutX="448.0" layoutY="456.0" onKeyReleased="#validateATC" prefHeight="31.0" prefWidth="66.0" promptText="qty">
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </JFXTextField>
+                        <JFXTextField fx:id="discountTxt" alignment="CENTER" layoutX="197.0" layoutY="456.0" onKeyReleased="#validateATC" prefHeight="31.0" prefWidth="144.0" promptText="Discount">
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </JFXTextField>
+                        <JFXButton fx:id="addToCartBtn" buttonType="RAISED" layoutX="578.0" layoutY="522.0" onAction="#addItemsToCart" ripplerFill="#c93434" style="-fx-background-color: grey;" text="Add To Cart" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                        <ImageView fx:id="toCheckoutTabBtn" fitHeight="44.0" fitWidth="46.0" layoutX="786.0" layoutY="478.0" onMouseClicked="#toCheckoutTab" onMouseEntered="#onMouseEnteredAnimation" onMouseExited="#onMouseExitAnimation">
+                           <image>
+                              <Image url="@misc/next.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <Label layoutX="312.0" layoutY="380.0" text="Maximum Discount : ">
+                           <font>
+                              <Font name="System Bold Italic" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="maxDiscountLbl" layoutX="440.0" layoutY="378.0" prefHeight="21.0" prefWidth="83.0">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="checkoutTab" style="-fx-cursor: hand;" text="Checkout">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="cartTbl" layoutX="13.0" layoutY="71.0" prefHeight="350.0" prefWidth="883.0">
+                           <columns>
+                              <TableColumn fx:id="cartItemCodeClm" prefWidth="157.0" text="Item" />
+                              <TableColumn fx:id="totPackSizeClm" prefWidth="199.0" text="Total Package Size" />
+                              <TableColumn fx:id="totQtyClm" minWidth="0.0" prefWidth="171.0" text="Quantity" />
+                              <TableColumn fx:id="totPriceClm" prefWidth="188.0" text="Total" />
+                              <TableColumn fx:id="discountClm" prefWidth="167.0" text="Discount (per-whole)" />
+                           </columns>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
+                        </TableView>
+                        <JFXButton fx:id="placeOrderBtn" buttonType="RAISED" defaultButton="true" layoutX="390.0" layoutY="510.0" onAction="#placeOrder" prefHeight="34.0" prefWidth="130.0" ripplerFill="#c93434" style="-fx-background-color: grey;" text="Place Order" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                        <JFXButton fx:id="removeFromCartBtn" buttonType="RAISED" layoutX="149.0" layoutY="443.0" onAction="#removeFromCart" prefHeight="31.0" prefWidth="104.0" ripplerFill="#c93434" style="-fx-background-color: grey;" text="Remove" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                        <JFXComboBox fx:id="customerCmb" layoutX="612.0" layoutY="24.0" promptText="Select Customer">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXComboBox>
+                        <Label layoutX="664.0" layoutY="443.0" text="TOTAL :">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="totalLbl" layoutX="727.0" layoutY="443.0" prefHeight="21.0" prefWidth="113.0">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="173.0" layoutY="29.0" text="Order ID : ">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="oidLbl" layoutX="253.0" layoutY="29.0" prefHeight="21.0" prefWidth="88.0" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+      <ImageView fx:id="navigateToHomePageBtn" fitHeight="50.0" fitWidth="50.0" layoutX="33.0" layoutY="14.0" onMouseClicked="#navigateToHomePage">
+         <image>
+            <Image url="@misc/home.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+   </children>
+</AnchorPane>

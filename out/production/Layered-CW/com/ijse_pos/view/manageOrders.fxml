@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPane" prefHeight="702.0" prefWidth="886.0" style="-fx-background-color: #cfc3a5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ijse_pos.controller.manageOrdersController">
+   <children>
+      <Label layoutX="212.0" layoutY="21.0" text="Manage Orders and Customer Info.">
+         <font>
+            <Font name="Georgia" size="26.0" />
+         </font>
+      </Label>
+      <Separator layoutX="5.0" layoutY="63.0" prefHeight="1.0" prefWidth="876.0" />
+      <JFXTabPane fx:id="mainTabPane" layoutX="-1.0" layoutY="65.0" prefHeight="637.0" prefWidth="886.0">
+         <tabs>
+            <Tab style="-fx-cursor: hand;" text="Orders">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <JFXTextField fx:id="searchOrdersByCustomerIDTxt" alignment="CENTER" focusColor="#ddaa32" layoutX="101.0" layoutY="36.0" onAction="#searchOrdersByCustomerID" prefHeight="31.0" prefWidth="230.0" promptText="Search By Customer ID" />
+                        <TableView fx:id="itemsTbl" layoutX="9.0" layoutY="100.0" prefHeight="303.0" prefWidth="866.0">
+                           <columns>
+                              <TableColumn fx:id="itemCodeClm" prefWidth="216.0" text="Item " />
+                              <TableColumn fx:id="orderQtyClm" prefWidth="155.0" text="Order Qty" />
+                              <TableColumn fx:id="qtyOnHandClm" minWidth="1.0" prefWidth="154.0" text="Qty On Hand" />
+                              <TableColumn fx:id="discountClm" minWidth="0.0" prefWidth="127.0" text="Discount" />
+                              <TableColumn fx:id="totalPriceClm" minWidth="0.0" prefWidth="213.0" text="Total" />
+                           </columns>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
+                        </TableView>
+                        <JFXComboBox fx:id="ordersCmb" layoutX="612.0" layoutY="36.0" onAction="#loadItemsForOrder" prefHeight="31.0" prefWidth="142.0" promptText="Orders">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXComboBox>
+                        <JFXButton buttonType="RAISED" layoutX="344.0" layoutY="36.0" onAction="#searchOrdersByCustomerID" text="⌕">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXButton>
+                        <JFXButton fx:id="updateOrderBtn" buttonType="RAISED" layoutX="240.0" layoutY="513.0" onAction="#updateOrder" text="Update Order">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXButton>
+                        <JFXButton fx:id="saveItemBtn" buttonType="RAISED" layoutX="508.0" layoutY="411.0" onAction="#saveItem" text="Save Item">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXButton>
+                        <JFXTextField fx:id="discountTxt" layoutX="82.0" layoutY="411.0" promptText="Discount">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXTextField>
+                        <JFXTextField fx:id="qtyTxt" layoutX="325.0" layoutY="411.0" prefHeight="31.0" prefWidth="37.0" promptText="Qty">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXTextField>
+                        <JFXButton fx:id="removeItemBtn" buttonType="RAISED" layoutX="651.0" layoutY="411.0" onAction="#removeItem" text="Remove Item">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXButton>
+                        <JFXButton fx:id="cancelOrderBtn" buttonType="RAISED" layoutX="439.0" layoutY="513.0" onAction="#cancelOrder" text="Cancel Order">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXButton>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="customerTab" style="-fx-cursor: hand;" text="Customers">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="customerTbl" layoutX="10.0" layoutY="42.0" prefHeight="422.0" prefWidth="866.0">
+                           <columns>
+                              <TableColumn fx:id="cusIDClm" prefWidth="145.0" text="Cutomer ID" />
+                              <TableColumn fx:id="titleClm" prefWidth="114.0" text="Title" />
+                              <TableColumn fx:id="nameClm" minWidth="1.0" prefWidth="220.0" text="Name" />
+                              <TableColumn fx:id="addressClm" minWidth="0.0" prefWidth="129.0" text="Address" />
+                              <TableColumn fx:id="cityClm" minWidth="0.0" prefWidth="94.0" text="City" />
+                              <TableColumn fx:id="provinceClm" minWidth="0.0" prefWidth="94.0" text="Province" />
+                              <TableColumn fx:id="pCodeClm" minWidth="0.0" prefWidth="69.0" text="P:Code" />
+                           </columns>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
+                        </TableView>
+                        <JFXButton fx:id="removeCustomerBtn" buttonType="RAISED" layoutX="186.0" layoutY="493.0" onAction="#removeCustomer" text="Remove Customer">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXButton>
+                        <JFXButton fx:id="updateCustomerBtn" buttonType="RAISED" layoutX="528.0" layoutY="493.0" onAction="#updateCustomer" text="Update Customer">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXButton>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="25.0" layoutY="11.0" onMouseClicked="#navigateToDashboard">
+         <image>
+            <Image url="@misc/home.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+   </children>
+</AnchorPane>

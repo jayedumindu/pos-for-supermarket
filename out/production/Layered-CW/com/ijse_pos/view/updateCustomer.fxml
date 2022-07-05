@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPane" prefHeight="599.0" prefWidth="369.0" style="-fx-background-color: #2333;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ijse_pos.controller.updateCustomerController">
+   <children>
+      <JFXTextField fx:id="nameTxt" layoutX="74.0" layoutY="66.0" onKeyReleased="#validateCustomer" prefHeight="31.0" prefWidth="215.0" promptText="Name" />
+      <JFXTextField fx:id="cityTxt" layoutX="74.0" layoutY="277.0" onKeyReleased="#validateCustomer" prefHeight="31.0" prefWidth="215.0" promptText="City" />
+      <JFXComboBox fx:id="titleCmb" layoutX="74.0" layoutY="223.0" prefHeight="31.0" prefWidth="215.0" promptText="Title" />
+      <JFXTextField fx:id="provinceTxt" layoutX="74.0" layoutY="327.0" onKeyReleased="#validateCustomer" prefHeight="31.0" prefWidth="215.0" promptText="Province" />
+      <JFXTextField fx:id="pCodeTxt" layoutX="74.0" layoutY="384.0" onKeyReleased="#validateCustomer" prefHeight="31.0" prefWidth="215.0" promptText="Postal Code" />
+      <JFXTextArea fx:id="addressTxt" layoutX="74.0" layoutY="115.0" onKeyReleased="#validateCustomer" prefHeight="74.0" prefWidth="222.0" promptText="Address" />
+      <JFXButton fx:id="updateCustomerBtn" buttonType="RAISED" layoutX="134.0" layoutY="512.0" onAction="#updateCustomer" ripplerFill="#9c2828" text="Save &amp; Exit">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></JFXButton>
+      <Label layoutX="122.0" layoutY="25.0" text="CID : ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="cidLbl" alignment="CENTER" layoutX="160.0" layoutY="25.0" prefHeight="21.0" prefWidth="77.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

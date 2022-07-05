@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="886.0" style="-fx-background-color: #cfc3a5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ijse_pos.controller.manageItemsController">
+   <children>
+      <Label layoutX="413.0" layoutY="21.0" text="Store">
+         <font>
+            <Font name="Georgia" size="26.0" />
+         </font>
+      </Label>
+      <JFXTabPane fx:id="mainTabPane" layoutY="67.0" prefHeight="631.0" prefWidth="886.0">
+         <tabs>
+            <Tab fx:id="addItemsTab" style="-fx-cursor: hand;" text="Add Items">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
+                     <children>
+                        <JFXButton fx:id="saveItemBtn" buttonType="RAISED" defaultButton="true" layoutX="365.0" layoutY="439.0" onAction="#saveItem" prefHeight="40.0" prefWidth="111.0" text="Save Item">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXButton>
+                        <JFXTextField fx:id="qtyOnHandTxt" layoutX="327.0" layoutY="333.0" onKeyReleased="#validateItem" prefHeight="31.0" prefWidth="96.0" promptText="Qty On Hand">
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor></JFXTextField>
+                        <JFXTextField fx:id="itemDescriptionTxt" layoutX="71.0" layoutY="129.0" onKeyReleased="#validateItem" prefHeight="31.0" prefWidth="427.0" promptText="Description">
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor></JFXTextField>
+                        <JFXTextField fx:id="packSizeTxt" layoutX="71.0" layoutY="242.0" onKeyReleased="#validateItem" promptText="Package Size (L/kg/g)">
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor></JFXTextField>
+                        <JFXTextField fx:id="discountTxt" layoutX="316.0" layoutY="242.0" onKeyReleased="#validateItem" promptText="Maximum Discount (Rs.)">
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor></JFXTextField>
+                        <JFXTextField fx:id="uPriceTxt" layoutX="71.0" layoutY="333.0" onKeyReleased="#validateItem" promptText="Unit Price (Rs.)">
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor></JFXTextField>
+                        <Label layoutX="214.0" layoutY="38.0" text="ItemCode : ">
+                           <font>
+                              <Font name="Serif Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="itemCodeTxt" alignment="CENTER" layoutX="336.0" layoutY="38.0" prefHeight="28.0" prefWidth="117.0" textAlignment="CENTER">
+                           <font>
+                              <Font name="Serif Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="updateAlertTxt" layoutX="225.0" layoutY="534.0" text="You're currently updating an item" visible="false">
+                           <font>
+                              <Font name="System Bold Italic" size="15.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="updateAlertBtn" layoutX="476.0" layoutY="529.0" mnemonicParsing="false" onAction="#cancelUpdate" text="Cancel" visible="false">
+                           <font>
+                              <Font name="System Italic" size="15.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="214.0" fitWidth="247.0" layoutX="568.0" layoutY="166.0">
+                           <image>
+                              <Image url="@misc/item_desk.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="customizeTab" style="-fx-cursor: hand;" text="Customize">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="886.0">
+                     <children>
+                        <TableView fx:id="itemsTbl" layoutX="10.0" layoutY="42.0" prefHeight="422.0" prefWidth="866.0">
+                           <columns>
+                              <TableColumn fx:id="itemCodeClm" editable="false" prefWidth="145.0" text="Item Code" />
+                              <TableColumn fx:id="descriptionClm" editable="false" prefWidth="232.0" text="Description" />
+                              <TableColumn fx:id="packSizeClm" editable="false" minWidth="1.0" prefWidth="125.0" text="Pack Size" />
+                              <TableColumn fx:id="uPriceClm" editable="false" minWidth="0.0" prefWidth="138.0" text="Unit Price" />
+                              <TableColumn fx:id="discountClm" editable="false" minWidth="0.0" prefWidth="115.0" text="Discount" />
+                              <TableColumn fx:id="qtyOnHandClm" editable="false" minWidth="0.0" prefWidth="110.0" text="Qty On Hand" />
+                           </columns>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
+                        </TableView>
+                        <JFXButton fx:id="removeItemBtn" buttonType="RAISED" layoutX="197.0" layoutY="493.0" onAction="#removeItem" text="Remove Item">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXButton>
+                        <JFXButton fx:id="updateItemBtn" buttonType="RAISED" layoutX="528.0" layoutY="493.0" onAction="#navigateToItemUpdateView" text="Update Item">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXButton>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="14.0" layoutY="11.0" onMouseClicked="#navigateToDashboard">
+         <image>
+            <Image url="@misc/home.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.SepiaTone?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPane" prefHeight="710.0" prefWidth="904.0" style="-fx-background-color: #b8aaa0;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ijse_pos.controller.reportGeneratorController">
+    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="94.0" layoutX="307.0" layoutY="580.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" width="423.0">
+         <cursor>
+            <Cursor fx:constant="DISAPPEAR" />
+         </cursor>
+         <effect>
+            <SepiaTone />
+         </effect></Rectangle>
+        <Label alignment="CENTER" layoutX="339.0" layoutY="24.0" prefHeight="34.0" prefWidth="231.0" text="System Reports">
+            <font>
+                <Font name="Georgia" size="26.0" />
+            </font>
+        </Label>
+        <Separator layoutX="4.0" layoutY="71.0" prefHeight="8.0" prefWidth="900.0" />
+      <Separator layoutX="159.0" layoutY="86.0" orientation="VERTICAL" prefHeight="615.0" prefWidth="6.0" />
+      <BarChart fx:id="barChartForReports" layoutX="176.0" layoutY="141.0" prefHeight="345.0" prefWidth="355.0" titleSide="BOTTOM">
+        <xAxis>
+          <CategoryAxis label="Items Sold" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis label="units" side="LEFT" />
+        </yAxis>
+         <cursor>
+            <Cursor fx:constant="DISAPPEAR" />
+         </cursor>
+      </BarChart>
+      <Label alignment="CENTER" layoutX="324.0" layoutY="593.0" prefHeight="34.0" prefWidth="231.0" text="Total Items Sold : ">
+         <font>
+            <Font name="Georgia" size="26.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="455.0" layoutY="627.0" prefHeight="34.0" prefWidth="91.0" text="Sales : ">
+         <font>
+            <Font name="Georgia" size="26.0" />
+         </font>
+      </Label>
+      <Label fx:id="totItemsLbl" alignment="CENTER" layoutX="546.0" layoutY="593.0" prefHeight="34.0" prefWidth="122.0">
+         <font>
+            <Font name="Georgia" size="26.0" />
+         </font>
+      </Label>
+      <Label fx:id="salesLbl" alignment="CENTER" layoutX="555.0" layoutY="627.0" prefHeight="34.0" prefWidth="122.0">
+         <font>
+            <Font name="Georgia" size="26.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="dailyReport" fitHeight="63.0" fitWidth="69.0" layoutX="45.0" layoutY="175.0" onMouseClicked="#generateDailyReport" onMouseEntered="#onMouseEnteredAnimation" onMouseExited="#onMouseExitAnimation">
+         <image>
+            <Image url="@misc/report_2.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="62.0" layoutY="137.0" text="Daily">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="monthlyReport" fitHeight="63.0" fitWidth="69.0" layoutX="46.0" layoutY="313.0" onMouseClicked="#generateMonthlyReport" onMouseEntered="#onMouseEnteredAnimation" onMouseExited="#onMouseExitAnimation">
+         <image>
+            <Image url="@misc/report_2.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="50.0" layoutY="273.0" text="Monthly">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="annualReport" fitHeight="63.0" fitWidth="69.0" layoutX="46.0" layoutY="456.0" onMouseClicked="#generateAnnualReport" onMouseEntered="#onMouseEnteredAnimation" onMouseExited="#onMouseExitAnimation">
+         <image>
+            <Image url="@misc/report_2.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="50.0" layoutY="424.0" text="Annualy">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="25.0" layoutY="14.0" onMouseClicked="#navigateToDashBoard">
+         <image>
+            <Image url="@misc/home.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <PieChart fx:id="pieChartForItems" layoutX="599.0" layoutY="178.0" prefHeight="233.0" prefWidth="263.0" title="items sold" />
+      <Label fx:id="reportLbl" layoutX="557.0" layoutY="24.0" prefHeight="34.0" prefWidth="177.0">
+         <font>
+            <Font name="Georgia" size="26.0" />
+         </font>
+      </Label>
+    </children>
+
+</AnchorPane>
